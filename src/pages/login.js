@@ -29,12 +29,17 @@ class login extends Component {
     await axios.get(baseUrl, {params: {username: this.state.from.username, password: md5(this.state.from.password)
     }})
     .then(response =>{
+      response(JSON.parse(axios.responseText))
+      console.log(response.data);
+
       return response.data;
     })
+    
     .then(response => {
+      
       if (response.length > 0){
-          
-          alert(`Bienvenido${response.nombre} ${response.apellido}`);
+        alert(`Bienvenido${response.nombre} ${response.apellido}`);
+        
 
       }
       else{
