@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import '../css/login.css';
-import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import md5 from 'md5';
 
 const baseUrl = "http://localhost:3001/usuarios";
-
 
 class login extends Component {
 
@@ -26,20 +24,22 @@ class login extends Component {
   }
 
   iniciarSesion = async() =>{
-    await axios.get(baseUrl, {params: {username: this.state.from.username, password: md5(this.state.from.password)
-    }})
+    
+    await axios.get(baseUrl, {params: {username: this.state.from.username,password: md5(this.state.from.password)}})
     .then(response =>{
-      response(JSON.parse(axios.responseText))
-      console.log(response.data);
-
+      
+      console.log(response.data[0].nombre);
       return response.data;
     })
     
     .then(response => {
       
       if (response.length > 0){
-        alert(`Bienvenido${response.nombre} ${response.apellido}`);
+
+       console.log(response);
         
+       alert(`Bienvenido ${response[0].nombre.toUpperCase()} ${response[0].apellido.toUpperCase()}`);
+       window.location.href="./Principal";
 
       }
       else{

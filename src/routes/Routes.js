@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import login from '../pages/login';
-import main from '../pages/main';
+import Principal from '../pages/Principal';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export default function Routes() {
@@ -9,7 +10,7 @@ export default function Routes() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={login}/> 
-        <Route exact path="/main" component={main}/>
+        <Route exact path="/Principal" component={Principal}/>
       </Switch>
     </BrowserRouter>
   );
